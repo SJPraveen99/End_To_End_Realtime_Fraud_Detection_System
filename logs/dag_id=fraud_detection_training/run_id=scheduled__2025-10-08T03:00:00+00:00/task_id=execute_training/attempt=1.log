@@ -1,0 +1,98 @@
+[2025-10-11T23:35:13.131+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-10-11T23:35:13.144+0000] {taskinstance.py:2614} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: fraud_detection_training.execute_training scheduled__2025-10-08T03:00:00+00:00 [queued]>
+[2025-10-11T23:35:13.154+0000] {taskinstance.py:2614} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: fraud_detection_training.execute_training scheduled__2025-10-08T03:00:00+00:00 [queued]>
+[2025-10-11T23:35:13.155+0000] {taskinstance.py:2867} INFO - Starting attempt 1 of 1
+[2025-10-11T23:35:13.172+0000] {taskinstance.py:2890} INFO - Executing <Task(PythonOperator): execute_training> on 2025-10-08 03:00:00+00:00
+[2025-10-11T23:35:13.179+0000] {warnings.py:112} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70: DeprecationWarning: This process (pid=79) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2025-10-11T23:35:13.181+0000] {standard_task_runner.py:72} INFO - Started process 80 to run task
+[2025-10-11T23:35:13.181+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'fraud_detection_training', 'execute_training', 'scheduled__2025-10-08T03:00:00+00:00', '--job-id', '16', '--raw', '--subdir', 'DAGS_FOLDER/fraud_detection_training_dag.py', '--cfg-path', '/tmp/tmp_d8banml']
+[2025-10-11T23:35:13.184+0000] {standard_task_runner.py:105} INFO - Job 16: Subtask execute_training
+[2025-10-11T23:35:13.234+0000] {task_command.py:467} INFO - Running <TaskInstance: fraud_detection_training.execute_training scheduled__2025-10-08T03:00:00+00:00 [running]> on host 956b547a14ea
+[2025-10-11T23:35:13.333+0000] {taskinstance.py:3134} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='datamasterylab.com' AIRFLOW_CTX_DAG_ID='fraud_detection_training' AIRFLOW_CTX_TASK_ID='execute_training' AIRFLOW_CTX_EXECUTION_DATE='2025-10-08T03:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-10-08T03:00:00+00:00'
+[2025-10-11T23:35:13.334+0000] {taskinstance.py:732} INFO - ::endgroup::
+[2025-10-11T23:35:14.068+0000] {font_manager.py:1639} INFO - generated new fontManager
+[2025-10-11T23:35:17.440+0000] {warnings.py:112} WARNING - /opt/***/dags/fraud_detection_training.py:45: UserWarning: The numpy.array_api submodule is still experimental. See NEP 47.
+  from numpy.array_api import astype
+
+[2025-10-11T23:35:17.502+0000] {fraud_detection_training_dag.py:24} INFO - Initializing fraud detection training
+[2025-10-11T23:35:17.508+0000] {fraud_detection_training.py:120} INFO - Configuration loaded successfully
+[2025-10-11T23:35:17.927+0000] {fraud_detection_training.py:163} INFO - Minio connection verified. Buckets: ['mlflow']
+[2025-10-11T23:35:18.669+0000] {fraud_detection_training.py:296} INFO - Starting model training process
+[2025-10-11T23:35:18.670+0000] {fraud_detection_training.py:188} INFO - Connecting to kafka topic transactions
+[2025-10-11T23:35:18.760+0000] {conn.py:396} INFO - <BrokerConnection client_id=kafka-python-2.2.15, node_id=bootstrap-0 host=pkc-921jm.us-east-2.aws.confluent.cloud:9092 <connecting> [IPv4 ('3.17.46.4', 9092)]>: connecting to pkc-921jm.us-east-2.aws.confluent.cloud:9092 [('3.17.46.4', 9092) IPv4]
+[2025-10-11T23:35:18.801+0000] {conn.py:497} INFO - <BrokerConnection client_id=kafka-python-2.2.15, node_id=bootstrap-0 host=pkc-921jm.us-east-2.aws.confluent.cloud:9092 <handshake> [IPv4 ('3.17.46.4', 9092)]>: Loading system default SSL CAs from ('/usr/lib/ssl/cert.pem', '/usr/lib/ssl/certs', 'SSL_CERT_FILE', '/usr/lib/ssl/cert.pem', 'SSL_CERT_DIR', '/usr/lib/ssl/certs')
+[2025-10-11T23:35:18.962+0000] {conn.py:618} INFO - <BrokerConnection client_id=kafka-python-2.2.15, node_id=bootstrap-0 host=pkc-921jm.us-east-2.aws.confluent.cloud:9092 <checking_api_versions_recv> [IPv4 ('3.17.46.4', 9092)]>: Broker version identified as 2.6
+[2025-10-11T23:35:19.051+0000] {conn.py:822} INFO - <BrokerConnection client_id=kafka-python-2.2.15, node_id=bootstrap-0 host=pkc-921jm.us-east-2.aws.confluent.cloud:9092 <authenticating> [IPv4 ('3.17.46.4', 9092)]>: Authenticated as H2OQOXW4DHV56LOI via SASL / Plain
+[2025-10-11T23:35:19.054+0000] {conn.py:467} INFO - <BrokerConnection client_id=kafka-python-2.2.15, node_id=bootstrap-0 host=pkc-921jm.us-east-2.aws.confluent.cloud:9092 <connected> [IPv4 ('3.17.46.4', 9092)]>: Connection complete.
+[2025-10-11T23:35:19.058+0000] {consumer.py:120} WARNING - group_id is None: disabling auto-commit.
+[2025-10-11T23:35:19.060+0000] {subscription_state.py:181} INFO - Updating subscribed topics to: ('transactions',)
+[2025-10-11T23:35:19.124+0000] {subscription_state.py:254} INFO - Updated partition assignment: [('transactions', 0), ('transactions', 1), ('transactions', 2), ('transactions', 3), ('transactions', 4), ('transactions', 5)]
+[2025-10-11T23:35:19.217+0000] {conn.py:396} INFO - <BrokerConnection client_id=kafka-python-2.2.15, node_id=6 host=b6-pkc-921jm.us-east-2.aws.confluent.cloud:9092 <connecting> [IPv4 ('3.132.27.31', 9092)]>: connecting to b6-pkc-921jm.us-east-2.aws.confluent.cloud:9092 [('3.132.27.31', 9092) IPv4]
+[2025-10-11T23:35:19.261+0000] {conn.py:396} INFO - <BrokerConnection client_id=kafka-python-2.2.15, node_id=7 host=b7-pkc-921jm.us-east-2.aws.confluent.cloud:9092 <connecting> [IPv4 ('3.22.226.86', 9092)]>: connecting to b7-pkc-921jm.us-east-2.aws.confluent.cloud:9092 [('3.22.226.86', 9092) IPv4]
+[2025-10-11T23:35:19.350+0000] {conn.py:396} INFO - <BrokerConnection client_id=kafka-python-2.2.15, node_id=8 host=b8-pkc-921jm.us-east-2.aws.confluent.cloud:9092 <connecting> [IPv4 ('3.135.51.41', 9092)]>: connecting to b8-pkc-921jm.us-east-2.aws.confluent.cloud:9092 [('3.135.51.41', 9092) IPv4]
+[2025-10-11T23:35:19.399+0000] {conn.py:396} INFO - <BrokerConnection client_id=kafka-python-2.2.15, node_id=9 host=b9-pkc-921jm.us-east-2.aws.confluent.cloud:9092 <connecting> [IPv4 ('3.13.246.56', 9092)]>: connecting to b9-pkc-921jm.us-east-2.aws.confluent.cloud:9092 [('3.13.246.56', 9092) IPv4]
+[2025-10-11T23:35:19.461+0000] {conn.py:396} INFO - <BrokerConnection client_id=kafka-python-2.2.15, node_id=10 host=b10-pkc-921jm.us-east-2.aws.confluent.cloud:9092 <connecting> [IPv4 ('3.146.181.229', 9092)]>: connecting to b10-pkc-921jm.us-east-2.aws.confluent.cloud:9092 [('3.146.181.229', 9092) IPv4]
+[2025-10-11T23:35:19.499+0000] {conn.py:396} INFO - <BrokerConnection client_id=kafka-python-2.2.15, node_id=11 host=b11-pkc-921jm.us-east-2.aws.confluent.cloud:9092 <connecting> [IPv4 ('3.132.234.190', 9092)]>: connecting to b11-pkc-921jm.us-east-2.aws.confluent.cloud:9092 [('3.132.234.190', 9092) IPv4]
+[2025-10-11T23:35:19.503+0000] {conn.py:497} INFO - <BrokerConnection client_id=kafka-python-2.2.15, node_id=6 host=b6-pkc-921jm.us-east-2.aws.confluent.cloud:9092 <handshake> [IPv4 ('3.132.27.31', 9092)]>: Loading system default SSL CAs from ('/usr/lib/ssl/cert.pem', '/usr/lib/ssl/certs', 'SSL_CERT_FILE', '/usr/lib/ssl/cert.pem', 'SSL_CERT_DIR', '/usr/lib/ssl/certs')
+[2025-10-11T23:35:19.529+0000] {conn.py:497} INFO - <BrokerConnection client_id=kafka-python-2.2.15, node_id=7 host=b7-pkc-921jm.us-east-2.aws.confluent.cloud:9092 <handshake> [IPv4 ('3.22.226.86', 9092)]>: Loading system default SSL CAs from ('/usr/lib/ssl/cert.pem', '/usr/lib/ssl/certs', 'SSL_CERT_FILE', '/usr/lib/ssl/cert.pem', 'SSL_CERT_DIR', '/usr/lib/ssl/certs')
+[2025-10-11T23:35:19.555+0000] {conn.py:497} INFO - <BrokerConnection client_id=kafka-python-2.2.15, node_id=8 host=b8-pkc-921jm.us-east-2.aws.confluent.cloud:9092 <handshake> [IPv4 ('3.135.51.41', 9092)]>: Loading system default SSL CAs from ('/usr/lib/ssl/cert.pem', '/usr/lib/ssl/certs', 'SSL_CERT_FILE', '/usr/lib/ssl/cert.pem', 'SSL_CERT_DIR', '/usr/lib/ssl/certs')
+[2025-10-11T23:35:19.580+0000] {conn.py:497} INFO - <BrokerConnection client_id=kafka-python-2.2.15, node_id=9 host=b9-pkc-921jm.us-east-2.aws.confluent.cloud:9092 <handshake> [IPv4 ('3.13.246.56', 9092)]>: Loading system default SSL CAs from ('/usr/lib/ssl/cert.pem', '/usr/lib/ssl/certs', 'SSL_CERT_FILE', '/usr/lib/ssl/cert.pem', 'SSL_CERT_DIR', '/usr/lib/ssl/certs')
+[2025-10-11T23:35:19.611+0000] {conn.py:497} INFO - <BrokerConnection client_id=kafka-python-2.2.15, node_id=10 host=b10-pkc-921jm.us-east-2.aws.confluent.cloud:9092 <handshake> [IPv4 ('3.146.181.229', 9092)]>: Loading system default SSL CAs from ('/usr/lib/ssl/cert.pem', '/usr/lib/ssl/certs', 'SSL_CERT_FILE', '/usr/lib/ssl/cert.pem', 'SSL_CERT_DIR', '/usr/lib/ssl/certs')
+[2025-10-11T23:35:19.658+0000] {conn.py:497} INFO - <BrokerConnection client_id=kafka-python-2.2.15, node_id=11 host=b11-pkc-921jm.us-east-2.aws.confluent.cloud:9092 <handshake> [IPv4 ('3.132.234.190', 9092)]>: Loading system default SSL CAs from ('/usr/lib/ssl/cert.pem', '/usr/lib/ssl/certs', 'SSL_CERT_FILE', '/usr/lib/ssl/cert.pem', 'SSL_CERT_DIR', '/usr/lib/ssl/certs')
+[2025-10-11T23:35:19.792+0000] {conn.py:822} INFO - <BrokerConnection client_id=kafka-python-2.2.15, node_id=7 host=b7-pkc-921jm.us-east-2.aws.confluent.cloud:9092 <authenticating> [IPv4 ('3.22.226.86', 9092)]>: Authenticated as H2OQOXW4DHV56LOI via SASL / Plain
+[2025-10-11T23:35:19.792+0000] {conn.py:467} INFO - <BrokerConnection client_id=kafka-python-2.2.15, node_id=7 host=b7-pkc-921jm.us-east-2.aws.confluent.cloud:9092 <connected> [IPv4 ('3.22.226.86', 9092)]>: Connection complete.
+[2025-10-11T23:35:19.793+0000] {conn.py:945} INFO - <BrokerConnection client_id=kafka-python-2.2.15, node_id=bootstrap-0 host=pkc-921jm.us-east-2.aws.confluent.cloud:9092 <connected> [IPv4 ('3.17.46.4', 9092)]>: Closing connection. 
+[2025-10-11T23:35:19.842+0000] {conn.py:822} INFO - <BrokerConnection client_id=kafka-python-2.2.15, node_id=9 host=b9-pkc-921jm.us-east-2.aws.confluent.cloud:9092 <authenticating> [IPv4 ('3.13.246.56', 9092)]>: Authenticated as H2OQOXW4DHV56LOI via SASL / Plain
+[2025-10-11T23:35:19.843+0000] {conn.py:467} INFO - <BrokerConnection client_id=kafka-python-2.2.15, node_id=9 host=b9-pkc-921jm.us-east-2.aws.confluent.cloud:9092 <connected> [IPv4 ('3.13.246.56', 9092)]>: Connection complete.
+[2025-10-11T23:35:19.888+0000] {conn.py:822} INFO - <BrokerConnection client_id=kafka-python-2.2.15, node_id=8 host=b8-pkc-921jm.us-east-2.aws.confluent.cloud:9092 <authenticating> [IPv4 ('3.135.51.41', 9092)]>: Authenticated as H2OQOXW4DHV56LOI via SASL / Plain
+[2025-10-11T23:35:19.888+0000] {conn.py:467} INFO - <BrokerConnection client_id=kafka-python-2.2.15, node_id=8 host=b8-pkc-921jm.us-east-2.aws.confluent.cloud:9092 <connected> [IPv4 ('3.135.51.41', 9092)]>: Connection complete.
+[2025-10-11T23:35:19.934+0000] {conn.py:822} INFO - <BrokerConnection client_id=kafka-python-2.2.15, node_id=6 host=b6-pkc-921jm.us-east-2.aws.confluent.cloud:9092 <authenticating> [IPv4 ('3.132.27.31', 9092)]>: Authenticated as H2OQOXW4DHV56LOI via SASL / Plain
+[2025-10-11T23:35:19.934+0000] {conn.py:467} INFO - <BrokerConnection client_id=kafka-python-2.2.15, node_id=6 host=b6-pkc-921jm.us-east-2.aws.confluent.cloud:9092 <connected> [IPv4 ('3.132.27.31', 9092)]>: Connection complete.
+[2025-10-11T23:35:19.986+0000] {conn.py:822} INFO - <BrokerConnection client_id=kafka-python-2.2.15, node_id=10 host=b10-pkc-921jm.us-east-2.aws.confluent.cloud:9092 <authenticating> [IPv4 ('3.146.181.229', 9092)]>: Authenticated as H2OQOXW4DHV56LOI via SASL / Plain
+[2025-10-11T23:35:19.987+0000] {conn.py:467} INFO - <BrokerConnection client_id=kafka-python-2.2.15, node_id=10 host=b10-pkc-921jm.us-east-2.aws.confluent.cloud:9092 <connected> [IPv4 ('3.146.181.229', 9092)]>: Connection complete.
+[2025-10-11T23:35:20.038+0000] {conn.py:822} INFO - <BrokerConnection client_id=kafka-python-2.2.15, node_id=11 host=b11-pkc-921jm.us-east-2.aws.confluent.cloud:9092 <authenticating> [IPv4 ('3.132.234.190', 9092)]>: Authenticated as H2OQOXW4DHV56LOI via SASL / Plain
+[2025-10-11T23:35:20.038+0000] {conn.py:467} INFO - <BrokerConnection client_id=kafka-python-2.2.15, node_id=11 host=b11-pkc-921jm.us-east-2.aws.confluent.cloud:9092 <connected> [IPv4 ('3.132.234.190', 9092)]>: Connection complete.
+[2025-10-11T23:35:20.039+0000] {fetcher.py:418} INFO - Resetting offset for partition ('transactions', 0) to offset 0.
+[2025-10-11T23:35:20.039+0000] {fetcher.py:418} INFO - Resetting offset for partition ('transactions', 1) to offset 0.
+[2025-10-11T23:35:20.040+0000] {fetcher.py:418} INFO - Resetting offset for partition ('transactions', 5) to offset 0.
+[2025-10-11T23:35:20.040+0000] {fetcher.py:418} INFO - Resetting offset for partition ('transactions', 4) to offset 0.
+[2025-10-11T23:35:20.086+0000] {fetcher.py:418} INFO - Resetting offset for partition ('transactions', 3) to offset 0.
+[2025-10-11T23:35:20.088+0000] {fetcher.py:418} INFO - Resetting offset for partition ('transactions', 2) to offset 0.
+[2025-10-11T23:37:03.089+0000] {conn.py:945} INFO - <BrokerConnection client_id=kafka-python-2.2.15, node_id=6 host=b6-pkc-921jm.us-east-2.aws.confluent.cloud:9092 <connected> [IPv4 ('3.132.27.31', 9092)]>: Closing connection. 
+[2025-10-11T23:37:03.100+0000] {fetcher.py:786} INFO - Fetch to node 6 failed: Cancelled: <BrokerConnection client_id=kafka-python-2.2.15, node_id=6 host=b6-pkc-921jm.us-east-2.aws.confluent.cloud:9092 <connected> [IPv4 ('3.132.27.31', 9092)]>
+[2025-10-11T23:37:03.101+0000] {conn.py:945} INFO - <BrokerConnection client_id=kafka-python-2.2.15, node_id=7 host=b7-pkc-921jm.us-east-2.aws.confluent.cloud:9092 <connected> [IPv4 ('3.22.226.86', 9092)]>: Closing connection. 
+[2025-10-11T23:37:03.103+0000] {fetcher.py:786} INFO - Fetch to node 7 failed: Cancelled: <BrokerConnection client_id=kafka-python-2.2.15, node_id=7 host=b7-pkc-921jm.us-east-2.aws.confluent.cloud:9092 <connected> [IPv4 ('3.22.226.86', 9092)]>
+[2025-10-11T23:37:03.103+0000] {conn.py:945} INFO - <BrokerConnection client_id=kafka-python-2.2.15, node_id=8 host=b8-pkc-921jm.us-east-2.aws.confluent.cloud:9092 <connected> [IPv4 ('3.135.51.41', 9092)]>: Closing connection. 
+[2025-10-11T23:37:03.104+0000] {fetcher.py:786} INFO - Fetch to node 8 failed: Cancelled: <BrokerConnection client_id=kafka-python-2.2.15, node_id=8 host=b8-pkc-921jm.us-east-2.aws.confluent.cloud:9092 <connected> [IPv4 ('3.135.51.41', 9092)]>
+[2025-10-11T23:37:03.105+0000] {conn.py:945} INFO - <BrokerConnection client_id=kafka-python-2.2.15, node_id=9 host=b9-pkc-921jm.us-east-2.aws.confluent.cloud:9092 <connected> [IPv4 ('3.13.246.56', 9092)]>: Closing connection. 
+[2025-10-11T23:37:03.106+0000] {fetcher.py:786} INFO - Fetch to node 9 failed: Cancelled: <BrokerConnection client_id=kafka-python-2.2.15, node_id=9 host=b9-pkc-921jm.us-east-2.aws.confluent.cloud:9092 <connected> [IPv4 ('3.13.246.56', 9092)]>
+[2025-10-11T23:37:03.106+0000] {conn.py:945} INFO - <BrokerConnection client_id=kafka-python-2.2.15, node_id=10 host=b10-pkc-921jm.us-east-2.aws.confluent.cloud:9092 <connected> [IPv4 ('3.146.181.229', 9092)]>: Closing connection. 
+[2025-10-11T23:37:03.108+0000] {fetcher.py:786} INFO - Fetch to node 10 failed: Cancelled: <BrokerConnection client_id=kafka-python-2.2.15, node_id=10 host=b10-pkc-921jm.us-east-2.aws.confluent.cloud:9092 <connected> [IPv4 ('3.146.181.229', 9092)]>
+[2025-10-11T23:37:03.108+0000] {conn.py:945} INFO - <BrokerConnection client_id=kafka-python-2.2.15, node_id=11 host=b11-pkc-921jm.us-east-2.aws.confluent.cloud:9092 <connected> [IPv4 ('3.132.234.190', 9092)]>: Closing connection. 
+[2025-10-11T23:37:03.109+0000] {fetcher.py:786} INFO - Fetch to node 11 failed: Cancelled: <BrokerConnection client_id=kafka-python-2.2.15, node_id=11 host=b11-pkc-921jm.us-east-2.aws.confluent.cloud:9092 <connected> [IPv4 ('3.132.234.190', 9092)]>
+[2025-10-11T23:37:03.980+0000] {fraud_detection_training.py:217} INFO - Kafka data read successfully with fraud rate: 0.36%
+[2025-10-11T23:37:08.505+0000] {fraud_detection_training.py:376} INFO - Starting hyperparameter tuning...
+[2025-10-11T23:37:08.509+0000] {warnings.py:112} WARNING - /home/***/.local/lib/python3.12/site-packages/joblib/parallel.py:1379: UserWarning: Loky-backed parallel loops cannot be called in a multiprocessing, setting n_jobs=1
+  n_jobs = self._backend.configure(
+
+[2025-10-11T23:43:37.415+0000] {fraud_detection_training.py:380} INFO - Best hyperparameters: {'classifier__subsample': 0.6, 'classifier__reg_alpha': 0.5, 'classifier__max_depth': 7, 'classifier__learning_rate': 0.1, 'classifier__gamma': 0, 'classifier__colsample_bytree': 0.6}
+[2025-10-11T23:43:37.700+0000] {fraud_detection_training.py:388} INFO - Optimal threshold determined: 0.7567
+[2025-10-11T23:43:38.735+0000] {credentials.py:1147} INFO - Found credentials in environment variables.
+[2025-10-11T23:43:39.368+0000] {warnings.py:112} WARNING - /home/***/.local/lib/python3.12/site-packages/mlflow/types/utils.py:452: UserWarning: Hint: Inferred schema contains integer column(s). Integer columns in Python cannot represent missing values. If your input data contains missing values at inference time, it will be encoded as floats and will cause a schema enforcement error. The best way to avoid this problem is to infer the model schema based on a realistic data sample (training dataset) that includes missing values. Alternatively, you can declare integer columns as doubles (float64) whenever these columns may have missing values. See `Handling Integers With Missing Values <https://www.mlflow.org/docs/latest/models.html#handling-integers-with-missing-values>`_ for more details.
+  warnings.warn(
+
+[2025-10-11T23:43:39.396+0000] {logging_mixin.py:190} WARNING - 2025/10/11 23:43:39 WARNING mlflow.models.model: `artifact_path` is deprecated. Please use `name` instead.
+[2025-10-11T23:43:45.330+0000] {logging_mixin.py:190} WARNING - Successfully registered model 'fraud_detection_model'.
+[2025-10-11T23:43:45.439+0000] {logging_mixin.py:190} WARNING - 2025/10/11 23:43:45 INFO mlflow.store.model_registry.abstract_store: Waiting up to 300 seconds for model version to finish creation. Model name: fraud_detection_model, version 1
+[2025-10-11T23:43:45.440+0000] {logging_mixin.py:190} WARNING - Created version '1' of model 'fraud_detection_model'.
+[2025-10-11T23:43:45.535+0000] {fraud_detection_training.py:452} INFO - Training successfully completed with metrics: {'auc_pr': 0.4605505594889979, 'precision': 0.86, 'recall': 0.44329896907216493, 'f1': 0.5850340136054422, 'threshold': 0.756701648235321}
+[2025-10-11T23:43:45.547+0000] {logging_mixin.py:190} INFO - 🏃 View run gaudy-snake-522 at: http://mlflow-server:5500/#/experiments/1/runs/7cebdc79a31546c684e512c91f5908cf
+[2025-10-11T23:43:45.547+0000] {logging_mixin.py:190} INFO - 🧪 View experiment at: http://mlflow-server:5500/#/experiments/1
+[2025-10-11T23:43:45.642+0000] {python.py:240} INFO - Done. Returned value was: {'status': 'success', 'precision': {'auc_pr': 0.4605505594889979, 'precision': 0.86, 'recall': 0.44329896907216493, 'f1': 0.5850340136054422, 'threshold': 0.756701648235321}}
+[2025-10-11T23:43:45.669+0000] {taskinstance.py:341} INFO - ::group::Post task execution logs
+[2025-10-11T23:43:45.670+0000] {taskinstance.py:353} INFO - Marking task as SUCCESS. dag_id=fraud_detection_training, task_id=execute_training, run_id=scheduled__2025-10-08T03:00:00+00:00, execution_date=20251008T030000, start_date=20251011T233513, end_date=20251011T234345
+[2025-10-11T23:43:45.723+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-10-11T23:43:45.749+0000] {taskinstance.py:3901} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-10-11T23:43:45.751+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
